@@ -1,0 +1,22 @@
+<h1>Product List</h1>
+
+<table>
+	<thead>
+		<tr>
+			<th>Product ID</th>
+			<th>Name</th>
+			<th>Description</th>
+			<th>Price</th>
+			<th>Stock</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="product in products">
+			<td>{{product.productid}}</td>
+			<td>{{product.name}}</td>
+			<td>{{product.description}}</td>
+			<td>{{product.price | currency}}</td>
+			<td>{{product.stock}}</td>
+		</tr>
+	</tbody>
+</table>

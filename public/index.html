@@ -1,0 +1,40 @@
+<html>
+<head>
+	<title>eShop</title>
+
+	<link rel="stylesheet" href="styles/main.css">
+
+	<script src="components/foundation/js/vendor/custom.modernizr.js"></script>
+
+	<script src="components/angular/angular.js"></script>
+	<script src="scripts/app.js"></script>
+	<script src="scripts/controllers/ShopCtrl.js"></script>
+	<script src="scripts/controllers/ProductListCtrl.js"></script>
+	<script src="scripts/controllers/ProductDetailCtrl.js"></script>
+	<script src="scripts/controllers/CategoryListCtrl.js"></script>
+	<script src="scripts/controllers/OrderCtrl.js"></script>
+	<script src="scripts/controllers/BasketCtrl.js"></script>
+
+</head>
+<body ng-app="shopApp">
+
+	<!-- navigation -->
+	<div ng-include src="'partials/navigation.html'"></div>
+
+	<!-- content view -->
+	<div ng-view></div>
+
+
+	<script>
+  		document.write('<script src=components/foundation/js/vendor/' + ('__proto__' in {} ? 'zepto' : 'jquery') + '.js><\/script>');
+	</script>
+	<script src="components/foundation/js/foundation/foundation.js"></script>
+	<script src="components/foundation/js/foundation/foundation.topbar.js"></script>
+
+	<script>
+		$(function() {
+			$(document).foundation();
+		})
+	</script>
+</body>
+</html>

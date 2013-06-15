@@ -1,0 +1,16 @@
+<h1>Category List</h1>
+
+<table>
+	<thead>
+		<tr>
+			<th>Category Name</th>
+			<th>Main Category</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="category in categories">
+			<td>{{category.name}}</td>
+			<td>{{category.maincategory}}</td>
+		</tr>
+	</tbody>
+</table>

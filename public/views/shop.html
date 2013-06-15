@@ -1,0 +1,23 @@
+<div class="row">
+
+  <!-- filter search -->
+  <input type="search" ng-model="query">
+
+  <ul class="large-block-grid-3 small-block-grid-2">
+    <li ng-repeat="product in products | filter:query">
+      <ul class="pricing-table">
+        <li class="title">
+          <a href="#/product-detail/{{product.productid}}">
+            {{product.name}}
+          </a>
+          <span ng-show="product.stock == 0" class="label alert">sold out</span>
+        </li>
+        <li class="product_image--container"><img ng-src="/images/products/{{product.image}}" class="product_image"></li>
+        <li class="price">{{product.price | currency}}</li>
+        <li class="description">{{product.description}}</li>
+        <li class="bullet-item">{{product.stock}} items in stock</li>
+        <li class="cta-button"><a href="" class="button" ng-class="{disabled: product.stock == 0 }">Buy</a></li>
+      </ul>
+    </li>
+  </ul>
+</div>

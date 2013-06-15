@@ -1,0 +1,10 @@
+{
+  "name": "iShop",
+  "version": "0.0.0",
+  "author": "Florian Uhlig",
+  "description": "online shop with persistent database",
+  "repository": "",
+  "dependencies": {
+    "express": "3.x"
+  }
+}

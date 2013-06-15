@@ -1,0 +1,74 @@
+[
+	{
+		"id": "type21",
+		"name": "Type 21",
+		"description": "Web project about typography",
+		"image": "images/projects/type21/1.png",
+		"date": 2012,
+		"type": "solo",
+		"category": "web"
+	},
+	{
+		"id": "inform",
+		"name": "inForm",
+		"description": "Multi-Device RSS Reader",
+		"image": "images/projects/inform/1.png",
+		"date": 2012,
+		"type": "team",
+		"category": "web"
+	},
+	{
+		"id": "wikimaps",
+		"name": "Wikimaps",
+		"description": "Social Tagging Network",
+		"image": "images/projects/wikimaps/1.png",
+		"date": 2012,
+		"type": "team",
+		"category": "web"
+	},
+	{
+		"id": "oxid",
+		"name": "Teamoxid",
+		"description": "Bumper for Online Stream",
+		"image": "images/projects/oxid/1.png",
+		"date": 2012,
+		"type": "solo",
+		"category": "video"
+	},
+	{
+		"id": "esl",
+		"name": "ESL Intro",
+		"description": "Intro for eSports league",
+		"image": "images/projects/esl/1.png",
+		"date": 2012,
+		"type": "solo",
+		"category": "video"
+	},		
+ 	{
+ 		"id": "bundesliga",
+		"name": "QL Bundesliga Season 2",
+		"description": "Intro for eSports league",
+		"image": "images/projects/bundesliga/1.png",
+		"date": 2012,
+		"type": "solo",
+		"category": "video"
+	},
+	{
+		"id": "ikea",
+		"name": "IKEA teaser",
+		"description": "Teaser promoting 2013 catalogue",
+		"image": "images/projects/ikea/1.png",
+		"date": 2012,
+		"type": "solo",
+		"category": "video"
+	},	
+	{
+		"id": "alien",
+		"name": "Alien Pilot",
+		"description": "3D Project starring a flying alien",
+		"image": "images/projects/alien/1.png",
+		"date": 2013,
+		"type": "solo",
+		"category": "video"
+	}
+]

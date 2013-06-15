@@ -1,0 +1,20 @@
+@import "../components/foundation/scss/foundation.scss";
+// @import "../components/foundation-icons/foundation_icons_general/sass/general_foundicons.scss";
+@import "fonts";
+
+
+.product_image {
+	max-height: 500px;
+}
+.product_image--container {
+	height: 200px;
+	text-align: center;
+
+	img {
+		max-height: 100%;
+	}
+}
+
+[class*="icon-"] {
+	font-size: 1.5em;
+}

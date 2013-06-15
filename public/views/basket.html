@@ -1,0 +1,20 @@
+<h1>Basket</h1>
+
+<table>
+	<thead>
+		<tr>
+			<th>Product</th>
+			<th>Quantity</th>
+			<th>Unit Price</th>
+			<th>Total Price</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="item in basket">
+			<td><a href="#/product-detail/{{item.productid}}">{{item.name}}</a></td>
+			<td><input type="number" value="{{item.quantity}}" min="1" max="{{item.stock}}" ng-model="quantity"></td>
+			<td>{{item.price | currency}}</td>
+			<td>total: {{item.price * quantity | currency}}</td>
+		</tr>
+	</tbody>
+</table>
