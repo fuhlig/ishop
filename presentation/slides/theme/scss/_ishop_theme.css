@@ -1,0 +1,25 @@
+@charset "CP850";
+q {
+  font-size: 32px;
+  line-height: 2; }
+  q:before {
+    content: '“';
+    position: absolute;
+    margin-left: -0.5em; }
+  q:after {
+    content: '”';
+    position: absolute;
+    margin-left: 0.1em; }
+
+img {
+  max-height: 95%; }
+  img.with_title {
+    max-height: 80%; }
+  hgroup + article img {
+    max-height: 80%; }
+
+em {
+  font-style: italic; }
+
+slide.fill {
+  background-position: center center; }

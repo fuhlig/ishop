@@ -1,0 +1,620 @@
+<!--
+Google IO 2012/2013 HTML5 Slide Template
+
+Authors: Eric Bidelman <ebidel@gmail.com>
+         Luke Mahé <lukem@google.com>
+
+URL: https://code.google.com/p/io-2012-slides
+-->
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">-->
+  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+  <!--This one seems to work all the time, but really small on ipad-->
+  <!--<meta name="viewport" content="initial-scale=0.4">-->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <link rel="stylesheet" media="all" href="theme/css/main.css">
+  <link rel="stylesheet" media="only screen and (max-device-width: 480px)" href="theme/css/phone.css">
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->
+  <script data-main="js/slides" src="js/require-1.0.8.min.js"></script>
+</head>
+<body style="opacity: 0">
+
+<slides class="layout-widescreen">
+
+  <slide class="logoslide nobackground">
+    <article class="flexbox vcenter">
+      <img src="images/ishop/ishop_logo_big.png">
+    </article>
+  </slide>
+
+  <slide class="title-slide segue nobackground">
+    <aside class="gdbar"><img src="images/ishop/ishop_logo.png"></aside>
+    <!-- The content of this hgroup is replaced programmatically through the slide_config.json. -->
+    <hgroup class="auto-fadein">
+      <h1 data-config-title><!-- populated from slide_config.json --></h1>
+      <h2 data-config-subtitle><!-- populated from slide_config.json --></h2>
+      <p data-config-presenter><!-- populated from slide_config.json --></p>
+    </hgroup>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Agenda</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>iShop
+          <ul>
+            <li>Beschreibung</li>
+            <li>Datenbank Schema</li>
+            <li>Datenbank Tabellen</li>
+          </ul>
+        </li>
+        <li>Backend
+          <ul>
+            <li>Node</li>
+            <li>Express</li>
+          </ul>
+        </li>
+        <li>Frontend
+          <ul>
+            <li>Angular</li>
+          </ul>
+        </li>
+        <li>Demo</li>
+      </ul>
+
+    </article>
+  </slide>  
+
+
+  <slide class="segue dark quote nobackground">
+    <aside class="gdbar right bottom"><img src="images/ishop/ishop_logo.png"></aside>
+    <article class="flexbox vleft auto-fadein">
+      <q>
+        iSHOP ist eine Online Shopping Plattform, auf der <b>Kunden</b> aus <b>Kategorien</b> <b>Produkte</b> auswählen, im Detail ansehen und bestellen können. Im <b>Warenkorb</b> können die ausgewählten Produkte bearbeitet und anschließend die <b>Bestellung</b> abgeschickt werden. Diese wird dann an die angegebene Adresse gesendet.
+      </q>
+      <div class="author">
+        iSHOP<br>
+        Online Shopping Plattform
+      </div>
+    </article>
+  </slide>
+
+  <slide>
+    <article class="flexbox vcenter">
+      <img src="images/ishop/er_modell.png" alt="">
+    </article>
+  </slide>
+
+  <slide>
+    <article class="flexbox vcenter">
+      <img src="images/ishop/er_modell_simple.png" alt="">
+    </article>
+  </slide>
+
+  <slide>
+    <article class="flexbox vcenter">
+      <img src="images/ishop/tables.png" alt="">
+    </article>
+  </slide>
+
+  <slide class="segue dark nobackground">
+    <aside class="gdbar"><img src="images/backend.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Backend</h2>
+    </hgroup>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Vereinfachter "Web-Stack"</h2>
+      <h3><em>traditionell</em></h3>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <img src="images/ishop/webstack_old.png" alt="">
+      <footer class="source">Quelle: <a href="http://youtu.be/qcnBtB7k39I">http://youtu.be/qcnBtB7k39I</a></footer>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Vereinfachter "Web-Stack"</h2>
+      <h3><em>JavaScript</em></h3>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <img src="images/ishop/webstack_js.png" alt="">
+      <footer class="source">Quelle: <a href="http://youtu.be/qcnBtB7k39I">http://youtu.be/qcnBtB7k39I</a></footer>
+    </article>
+  </slide>
+
+  <slide class="fill nobackground" style="background-image: url(images/nodejs.png)">
+    <hgroup>
+      <h2 class="white">Serverside JavaScript</h2>
+    </hgroup>
+    <footer class="source white">nodejs.org</footer>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>NodeJS</h2>
+    </hgroup>
+    <article>
+      <ul>
+        <li>2009 von Ryan Dahl entwickelt</li>
+        <li>basiert auf Google's V8 JS VM</li>
+        <li>minimalistischer Kern <em>(no batteries included)</em></li>
+        <li>Erweiterbarkeit über <a href="https://npmjs.org/">NPM</a></li>
+      </ul>
+
+      <ul>
+        <li>non-blocking I/O</li>
+        <li>event-driven</li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>NodeJS</h2>
+      <h3>non-blocking I/O</h3>
+    </hgroup>
+    <article>
+      <ul class="build">
+        <li>
+          <pre class="prettyprint" data-lang="javascript">
+          var result = db.query('select * from Table');
+          // warten auf result
+          // result verwenden
+          </pre>
+        </li>
+        <li>
+          <pre class="prettypring" data-lang="javascript">
+          db.query('select * from Table' function(res) {
+            // result verwenden
+          });
+
+          // weiterarbeiten
+          </pre>
+        </li>
+      </ul>
+    </article>
+  </slide>
+
+  <slide class="dark">
+    <hgroup>
+      <h3>non-blocking I/O</h3>
+    </hgroup>
+    <article class="flexbox vcenter">
+      <img src="images/node_eventloop.png" alt="">
+      <footer class="source">Quelle: <a href="http://kunkle.org/nodejs-explained-pres/">kunkle.org</a></footer>
+    </article>
+  </slide>
+  
+  <slide>
+    <hgroup>
+      <h2>NodeJS</h2>
+      <h3>event-driven</h3>
+    </hgroup>
+    <article>
+        <pre class="prettyprint" data-lang="javascript">
+exports.findById = function(req, res) {
+    var id = req.params.id;
+    query = client.query("SELECT * FROM product WHERE productid = $1", id);
+    <b>
+    query.on("row", function(row, result) {
+      result.addRow(row);
+    });
+    query.on("end", function(result) {
+      res.json(result.rows);
+    });
+    </b>
+  };
+        </pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>NodeJS</h2>
+      <h3>simples Beispiel</h3>
+    </hgroup>
+    <article>
+        <pre class="prettyprint" data-lang="javascript">
+// Dependencies
+var http = require("http");
+
+// Server erstellen
+var app = http.createServer(function(request, response) {
+  response.writeHead(200, {
+    "Content-Type": "text/plain"
+  });
+  response.end("Hello world!\n");
+});
+
+// Server starten
+app.listen(1337, "localhost");
+console.log("Server running at http://localhost:1337/");
+        </pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Node Package Manager (<a href="https://npmjs.org/">NPM</a>)</h2>
+      <h3>Erweiterbarkeit</h3>
+    </hgroup>
+    <article>
+        <pre class="prettyprint" data-lang="json">
+{
+  "name": "iShop",
+  "version": "0.0.1",
+  "author": "Florian Uhlig",
+  "description": "online shop with persistent database",
+  "repository": "",
+  "dependencies": {
+    "express": "3.x"
+  }
+}
+        </pre>
+        <pre class="prettypring" data-lang="cmd">
+<span class="com">// package.json dependencies</span>
+$ npm install
+// manual install
+$ npm install <em>package-name</em>
+        </pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>ExpressJS</h2>
+      <h3><em>web application framework für node</em></h3>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="javascript">
+var express = require("express");
+
+// create express server
+var app = express();
+
+// API
+app.get("/api/product", product.findAll);
+app.get("/api/product/:id", product.findById);
+app.get("/api/basket", basket.get);
+app.post("/api/order/:productid/:quantity", basket.add);
+
+// server listening on port
+app.listen(8080);        
+      </pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>node-postgres</h2>
+      <h3><em>PostgreSQL client für node</em></h3>
+      <h4>Datenbankzugriff [config.js]</h4>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="javascript">
+var pg = require("pg");
+
+// database info
+var db_user = "admin",
+  db_password = "admin",
+  host = "localhost",
+  db_name = "ishop";
+
+// "tcp://user:password@host/database"
+var connectionString = "tcp://" + db_user + ":" + db_password + "@" + host + "/" + db_name;
+
+var client = new pg.Client(connectionString);
+exports.client = client;
+client.connect();
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>API</h2>
+      <h3>Alle Produkte [product.js]</h3>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="javascript">
+var client = require("../config.js").client;
+exports.findAll = function(req, res) {
+
+  query = client.query("SELECT * FROM product");
+
+  query.on("row", function(row, result) {
+    result.addRow(row);
+  });
+  query.on("end", function(result) {
+    res.json(result.rows);
+  });
+};
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>API</h2>
+      <h3>Produkt mit ID [product.js]</h3>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="javascript">
+exports.findById = function(req, res) {
+  var id = req.params.id;
+
+  //prepared statement
+  query = client.query("SELECT * FROM product WHERE productid = $1", id);
+
+  query.on("row", function(row, result) {
+    result.addRow(row);
+  });
+  query.on("end", function(result) {
+    res.json(result.rows);
+  });
+};        
+      </pre>
+    </article>
+  </slide>
+
+  <slide class="segue dark nobackground">
+    <aside class="gdbar"><img src="images/frontend2.png"></aside>
+    <hgroup class="auto-fadein">
+      <h2>Frontend</h2>
+    </hgroup>
+  </slide>
+
+  <slide class="dark nobackground">
+    <article class="flexbox vcenter">
+      <img src="images/angular.png" alt="">
+    </article>
+  </slide>
+
+<!-- ANGULAR OVERVIEW -->
+  <slide>
+    <hgroup>
+      <h2>AngularJS</h2>
+      <h3></h3>
+    </hgroup>
+    <article>
+      <ul>
+        <li>Frontend MVC Framework</li>
+        <li>Opensource Projekt von Google</li>
+      </ul>
+
+      <ul>
+        <li>Templating</li>
+        <li>Dependency Injection</li>
+        <li>Two-Way Data-Binding</li>
+        <li>Directives</li>
+        <li><em>Testing</em></li>
+        <li>...</li>
+      </ul>
+    </article>
+  </slide>
+
+<!-- TEMPLATING -->
+  <slide>
+    <hgroup>
+      <h2>Templating</h2>
+      <h3>Modulare Views [index.html]</h3>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="html">
+&lt;body ng-app="shopApp"&gt;
+
+  &lt;!-- navigation --&gt;
+  &lt;div ng-include src="'partials/navigation.html'"&gt;&lt;/div&gt;
+
+  &lt;!-- content view --&gt;
+  &lt;div ng-view&gt;&lt;/div&gt;
+
+&lt;/body&gt;      
+      </pre>
+    </article>
+  </slide>
+
+<!-- TEMPLATING -->
+  <slide>
+    <hgroup>
+      <h2>Templating</h2>
+      <h3>Modulare Views [app.js]</h3>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="html">
+angular.module('<b>shopApp</b>', []).
+  config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+    $routeProvider.when('/', {
+      templateUrl: 'views/shop.html', 
+      controller: 'ShopCtrl'
+    });
+    $routeProvider.when('<b>/product-detail/:id</b>', {
+      <b>templateUrl</b>: 'views/product-detail.html', 
+      <b>controller</b>: 'ProductDetailCtrl'
+    });
+    $routeProvider.otherwise({
+      redirectTo: '/'
+    });
+  }]);
+      </pre>
+    </article>
+  </slide>
+
+
+<!-- DEPENDENCY INJECTION -->
+  <slide>
+    <hgroup>
+      <h2>Dependency Injection</h2>
+
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="javascript">
+angular.module('shopApp')
+  .controller('ShopCtrl', function ($scope, $http) {
+
+    $http({method: 'GET', url: '/api/product'}).
+    success(function(data) {
+      $scope.products = data;
+    }).
+    error(function(data) {
+      $scope.products = 'error'
+    });
+  });
+      </pre>
+    </article>
+  </slide>
+
+<!-- TWO-WAY DATA-BINDING -->
+  <slide>
+    <hgroup>
+      <h2>Two-Way Data-Binding</h2>
+      <h3>konsistente Daten zwischen View und Control</h3>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="jQuery">
+&lt;input id="name" value="Hello"&gt;
+&lt;p id="greeting"&gt;&lt;/p&gt;
+ 
+&lt;script&gt;
+$(function(){
+  var name = $('#name');
+  var greeting = $('#greeting');
+ 
+  function update(){
+    greeting.text('Hello ' + name.val() + '!');
+  }
+  update();
+ 
+  name.bind('keydown', function(){
+    setTimeout(update, 0);
+  });
+});
+&lt;/script&gt;       
+      </pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Two-Way Data-Binding</h2>
+      <h3>konsistente Daten zwischen View und Control</h3>
+    </hgroup>
+    <article>
+        <pre class="prettyprint" data-lang="Angular">
+&lt;input name="firstName" value="John"&gt;
+&lt;p&gt;Hello {{firstName}}!&lt;/p&gt;
+        </pre>
+        <pre class="prettyprint" data-lang="Angular">
+&lt;tbody&gt;
+  &lt;tr ng-repeat="product in products"&gt; <span class="com">// Schleife über Produkte (for each)</span>
+    &lt;td&gt;{{product.productid}}&lt;/td&gt;
+    &lt;td&gt;{{product.name}}&lt;/td&gt;
+    &lt;td&gt;{{product.description}}&lt;/td&gt;
+    &lt;td&gt;{{product.price | currency}}&lt;/td&gt;
+    &lt;td&gt;{{product.stock}}&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+        </pre>
+    </article>
+  </slide>
+
+<!-- DIRECTIVES -->
+  <slide>
+    <hgroup>
+      <h2>Directives</h2>
+      <h3>HTML um eigene Komponenten erweitern</h3>
+    </hgroup>
+    <article>
+      <pre class="prettyprint" data-lang="javascript">
+shopApp.directive('product', function() {
+  return {
+    template: '&lt;h4&gt;{{type.name}}&lt;/h4&gt;' +
+      '&lt;img ng-src="{{type.img}}"' +
+      '&lt;div&gt;' +
+        '&lt;p&gt;Price: {{type.price | currency}}&lt;/p&gt;' +
+      '&lt;/div&gt;',
+    restrict: 'E',
+    scope: {
+      'type': '='
+    }
+  };
+});
+      </pre>
+      <pre class="prettyprint" data-lang="javascript">
+&lt;li ng-repeat="thing in catalog"&gt;
+  &lt;product type="thing"&gt;&lt;/product&gt;
+&lt;/li&gt;
+      </pre>
+    </article>
+  </slide>
+
+  <slide>
+    <hgroup>
+      <h2>Two-Way Data-Binding</h2>
+    </hgroup>
+    <article>
+        <pre class="prettyprint" data-lang="Angular">
+&lt;input name="firstName" value="John"&gt;
+&lt;p&gt;Hello {{firstName}}!&lt;/p&gt;
+        </pre>
+        <pre class="prettyprint" data-lang="Angular">
+&lt;tbody&gt;
+  &lt;tr ng-repeat="product in products"&gt;
+    &lt;td&gt;{{product.productid}}&lt;/td&gt;
+    &lt;td&gt;{{product.name}}&lt;/td&gt;
+    &lt;td&gt;{{product.description}}&lt;/td&gt;
+    &lt;td&gt;{{product.price | currency}}&lt;/td&gt;
+    &lt;td&gt;{{product.stock}}&lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+        </pre>
+    </article>
+  </slide>
+
+  <slide class="thank-you-slide segue nobackground">
+    <article class="flexbox vleft auto-fadein">
+      <h2>Danke!</h2>
+      <h3>Fragen?</h3>
+    </article>
+    <p class="auto-fadein" data-config-contact>
+      <!-- populated from slide_config.json -->
+    </p>
+  </slide>
+
+  <slide class="logoslide dark nobackground">
+    <article class="flexbox vcenter">
+      <span><img src="images/google_developers_logo_white.png"></span>
+    </article>
+  </slide>
+
+  <slide class="backdrop"></slide>
+
+</slides>
+
+<script>
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-XXXXXXXX-1']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+<!--[if IE]>
+  <script src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js"></script>
+  <script>CFInstall.check({mode: 'overlay'});</script>
+<![endif]-->
+</body>
+</html>

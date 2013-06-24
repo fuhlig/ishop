@@ -1,0 +1,40 @@
+q {
+  font-size: 32px;
+  line-height: 2;
+
+  &:before {
+    content: '“';
+    position: absolute;
+    margin-left: -0.5em;
+  }
+  &:after {
+    content: '”';
+    position: absolute;
+    margin-left: 0.1em;
+  }
+}
+
+img {
+  max-height: 95%;
+
+  .logoslide & {
+    height: auto;
+  }
+
+  // smaller when title displayed
+  hgroup +  article & {
+    max-height: 80%;
+  }
+}
+
+em {
+  font-style: italic;
+}
+
+slide.fill {
+  background-position: center center;
+}
+
+pre:first-child {
+  margin-top:  - round($article-content-top-padding / 2);
+}
