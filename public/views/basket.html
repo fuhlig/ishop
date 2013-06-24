@@ -1,20 +1,27 @@
 <h1>Basket</h1>
 
-<table>
-	<thead>
-		<tr>
-			<th>Product</th>
-			<th>Quantity</th>
-			<th>Unit Price</th>
-			<th>Total Price</th>
-		</tr>
-	</thead>
-	<tbody>
-		<tr ng-repeat="item in basket">
-			<td><a href="#/product-detail/{{item.productid}}">{{item.name}}</a></td>
-			<td><input type="number" value="{{item.quantity}}" min="1" max="{{item.stock}}" ng-model="quantity"></td>
-			<td>{{item.price | currency}}</td>
-			<td>total: {{item.price * quantity | currency}}</td>
-		</tr>
-	</tbody>
-</table>
+<div ng-show="basket.length == 0">empty basket</div>
+
+<div ng-show="basket.length > 0">
+	<table>
+		<thead>
+			<tr>
+				<th>Product</th>
+				<th>Quantity</th>
+				<th>Unit Price</th>
+				<th>Total Price</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="item in basket">
+				<td><a href="#/product-detail/{{item.productid}}">{{item.name}}</a></td>
+				<td><input type="number" value="{{item.quantity}}" min="0" max="{{item.stock}}" ng-model="quantity"></td>
+				<td>{{item.price | currency}}</td>
+				<td>total: {{item.price * quantity | currency}}</td>
+				<td><a class="button alert" ng-click="remove(item)"><span class="icon-close"></span></a></td>
+				<td><a class="button" ng-click="update(item, quantity)">update</a></td>
+			</tr>
+		</tbody>
+	</table>
+</div>

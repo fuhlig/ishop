@@ -10,8 +10,13 @@ angular.module('shopApp')
   			$scope.product = data[0];
   		});
 
-  	$scope.addProduct = function(product) {
-  		console.log("buy product");
-  		console.log(product);
+  	$scope.addProduct = function(product, quantity) {
+      var id = product.productid;
+      console.log("id: " + id);
+      console.log("quantity: " + quantity);
+      $http.post("/api/order/" + id + "/" + quantity).
+        success(function(data) {
+          console.log("result data: " + data);
+        });
   	};
   });

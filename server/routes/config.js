@@ -10,5 +10,5 @@ var db_user = "admin",
 var connectionString = "tcp://" + db_user + ":" + db_password + "@" + host + "/" + db_name;
 
 var client = new pg.Client(connectionString);
-client.connect();
 exports.client = client;
+client.connect();

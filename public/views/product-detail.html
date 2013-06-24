@@ -22,7 +22,7 @@
 			<p ng-show="product.stock == 0" class="label alert">sold out</p>
 			<input type="number" min="0" max="{{product.stock}}" value="1" ng-model="quantitiy">
 			<p>Sum: {{quantitiy * product.price | currency}}</p>
-			<a class="button" ng-click="addProduct(product)" ng-class="{disabled: product.stock == 0 || quantitiy == 0}">Add to Basket</a>
+			<a class="button" ng-click="addProduct(product, quantitiy)" ng-class="{disabled: product.stock == 0 || quantitiy == 0}">Add to Basket</a>
 		</div>
 	</div>
 </div>

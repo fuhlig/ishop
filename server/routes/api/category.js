@@ -12,7 +12,7 @@ exports.findAll = function(req, res) {
 
 exports.findById = function(req, res) {
 	var id = req.params.id;
-	query = client.query("SELECT * FROM category WHERE categoryid = $1", id);
+	query = client.query("SELECT * FROM category WHERE name = $1", id);
 
 	query.on("row", function(row, result) {
 		result.addRow(row);

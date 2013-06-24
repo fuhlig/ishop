@@ -1,5 +1,6 @@
 var client = require("../config.js").client;
 exports.findAll = function(req, res) {
+
 	query = client.query("SELECT * FROM product");
 
 	query.on("row", function(row, result) {

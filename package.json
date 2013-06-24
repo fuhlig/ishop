@@ -1,6 +1,6 @@
 {
   "name": "iShop",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "author": "Florian Uhlig",
   "description": "online shop with persistent database",
   "repository": "",

@@ -42,7 +42,9 @@ CREATE TABLE Product (
 
 CREATE TABLE OrderLine (
 	OrderID		SERIAL PRIMARY KEY,
-	OrderDate	TIMESTAMP
+	OrderDate	TIMESTAMP,
+	Closed		BOOLEAN
+	
 );
 
 CREATE TABLE Basket (
@@ -80,20 +82,19 @@ INSERT INTO Product (Name, Description, Price, Stock, Category, Image)
 INSERT INTO Product (Name, Description, Price, Stock, Category, Image)
 	VALUES ('Nexus s', '4inch developer phone from google/samsung', '200', 50, 'Smartphones', 'nexus-s.png');
 
-INSERT INTO OrderLine (OrderDate)
-	VALUES (now());
-INSERT INTO OrderLine (OrderDate)
-	VALUES (now());
-INSERT INTO OrderLine (OrderDate)
-	VALUES (now());
-	
-INSERT INTO Basket (OrderID, ProductID, Quantity)
-	VALUES (1, 1, 2);
-INSERT INTO Basket (OrderID, ProductID, Quantity)
-	VALUES (1, 4, 10);
+INSERT INTO OrderLine (OrderDate, Closed)
+	VALUES (now(), true);
+INSERT INTO OrderLine (OrderDate, Closed)
+	VALUES (now(), false);
 
-INSERT INTO Basket (OrderID, ProductID, Quantity)
-	VALUES (2, 2, 1);
-INSERT INTO Basket (OrderID, ProductID, Quantity)
-	VALUES (2, 4, 10);
+	
+-- INSERT INTO Basket (OrderID, ProductID, Quantity)
+-- 	VALUES (1, 1, 2);
+-- INSERT INTO Basket (OrderID, ProductID, Quantity)
+-- 	VALUES (1, 4, 10);
+-- 
+-- INSERT INTO Basket (OrderID, ProductID, Quantity)
+-- 	VALUES (2, 2, 1);
+-- INSERT INTO Basket (OrderID, ProductID, Quantity)
+-- 	VALUES (2, 4, 10);
 	
