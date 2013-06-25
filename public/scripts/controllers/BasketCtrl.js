@@ -1,29 +1,24 @@
 'use strict';
 
 angular.module('shopApp')
-  .controller('BasketCtrl', function ($scope, $http, $routeParams) {
+  .controller('BasketCtrl', function ($scope, $http, $routeParams, BasketService) {
 
-    $http.get("/api/basket").
-      success(function(data) {
-        console.log("basket");
-        console.log(data);
-        $scope.basket = data;
+    BasketService.get().then(function(data) {
+      console.log("basket.get");
+      console.log(data.data);
+      $scope.basket = data.data;
+    });
+
+    $scope.remove = function(item) {
+      BasketService.remove(item).then(function(data) {
+        BasketService.get();
       });
-
-
-  	$scope.remove = function(item) {
-      $http.delete("/api/order/" + item.productid).
-        success(function(data) {
-          console.log("item removed: " + data);
-        }).
-        error(function(data) {
-          console.log("error removing: " + data);
-        });
     };
 
     $scope.update = function(item, quantity) {
-      var id = item.productid;
-      $http.post("/api/basket/" + id + "/" + quantity);
+      BasketService.update(item, quantity).then(function(data) {
+        console.log("basket updated");
+      });
     };
 
   });

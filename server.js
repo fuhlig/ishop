@@ -1,8 +1,9 @@
 var express = require("express");
 
 var product = require("./server/routes/api/product"),
-	category = require("./server/routes/api/category")
+	category = require("./server/routes/api/category");
 	basket = require("./server/routes/api/basket");
+	order = require("./server/routes/api/basket");
 
 // create express server
 var app = express();
@@ -18,10 +19,11 @@ app.get("/api/product/:id", product.findById);
 app.get("/api/category", category.findAll);
 app.get("/api/category/:id", category.findById);
 app.get("/api/basket", basket.get);
-app.post("/api/order/:productid/:quantity", basket.add);
+app.post("/api/basket/:productid/:quantity", basket.add);
 app.delete("/api/basket/:id", basket.remove);
-app.post("/api/basket/:productid/:quantity", basket.update);
-
+app.put("/api/basket/:productid/:quantity", basket.update);
+app.get("/api/basket/count", basket.itemCount);
+app.get("/api/order", order.get);
 
 // server listening on port
 app.listen(8080);

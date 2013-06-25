@@ -1,15 +1,28 @@
-<form ng-submit="submitOrder()">
-	<label>Name*</label>
-	<input type="text" ng-model="prod_name" placeholder="product name" autocomplete="on" required=required>
+<h1>Order</h1>
 
-	<label>Description</label>
-	<input type="text" ng-model="prod_description" placeholder="describe product" autocomplete="on">
+{{order}}
 
-	<label>Price</label>
-	<input type="text" ng-model="prod_price" placeholder="price" autocomplete="on">
+<table>
+	<thead>
+		<tr>
+			<th>Product ID</th>
+			<th>Name</th>
+			<th>Description</th>
+			<th>Unit Price</th>
+			<th>Quantity</th>
+			<th>Subtotal</th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="item in basket">
+			<td>{{item.productid}}</td>
+			<td>{{item.name}}</td>
+			<td>{{item.description}}</td>
+			<td>{{item.price | currency}}</td>
+			<td>{{item.quantity}}</td>
+			<td>{{item.price * item.quantity | currency}}</td>
+		</tr>
+	</tbody>
+</table>
 
-	<label>Amount</label>
-	<input type="text" ng-model="prod_amount" placeholder="€" autocomplete="on">
-
-	<input type="submit" value="order">
-</form>
+<p>Total:</p>

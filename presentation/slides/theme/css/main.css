@@ -1333,3 +1333,7 @@ slide.fill {
 pre:first-child {
   margin-top: -23px;
 }
+
+h4 {
+  margin: 1em;
+}

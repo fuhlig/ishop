@@ -5,8 +5,6 @@ angular.module('shopApp')
     // Service logic
     // ...
 
-    var meaningOfLife = 42;
-
     // Public API here
     return {
       findAll: function() {

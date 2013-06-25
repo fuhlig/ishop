@@ -1,7 +1,7 @@
 <div class="row">
 
   <!-- filter search -->
-  <input type="search" ng-model="query">
+  <input type="search" ng-model="query" placeholder="search product">
 
 
   <ul class="large-block-grid-3 small-block-grid-2">
@@ -17,7 +17,10 @@
         <li class="price">{{product.price | currency}}</li>
         <li class="description">{{product.description}}</li>
         <li class="bullet-item">{{product.stock}} items in stock</li>
-        <li class="cta-button"><a ng-click="addProduct(product, 1)" class="button" ng-class="{disabled: product.stock == 0 }">Buy</a></li>
+        <li class="cta-button">
+          <a ng-show="product.stock > 0" ng-click="addProduct(product, 1)" class="button">Buy</a>
+          <span ng-show="product.stock == 0" class="button disabled">Buy</span>
+        </li>
       </ul>
     </li>
   </ul>

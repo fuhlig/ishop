@@ -27,7 +27,7 @@ Instead of a list of all class selectors,
 you can use the generic selector below, but it's slower:
 [class*="icon-"] {
 */
-.icon-close, .icon-plus, .icon-coin, .icon-credit, .icon-cart {
+[class*="icon-"] {
 	font-family: 'icomoon';
 	speak: none;
 	font-style: normal;
@@ -51,4 +51,7 @@ you can use the generic selector below, but it's slower:
 }
 .icon-cart:before {
 	content: "\e005";
+}
+.icon-refresh:before {
+	content: "\e002";
 }

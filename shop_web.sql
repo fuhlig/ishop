@@ -44,7 +44,6 @@ CREATE TABLE OrderLine (
 	OrderID		SERIAL PRIMARY KEY,
 	OrderDate	TIMESTAMP,
 	Closed		BOOLEAN
-	
 );
 
 CREATE TABLE Basket (

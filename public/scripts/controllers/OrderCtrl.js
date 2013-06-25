@@ -1,20 +1,24 @@
 'use strict';
 
 angular.module('shopApp')
-  .controller('OrderCtrl', function ($scope, $http, ProductService) {
+  .controller('OrderCtrl', function ($scope, $http, BasketService) {
 
-  	console.log("ordering started");
-  	$scope.submitOrder = function() {
-  		console.log("ordering...");
-  		var item = {
-  			name: $scope.prod_name,
-  			description: $scope.prod_description,
-  			price: $scope.prod_price,
-  			amount: $scope.prod_amount
-  		};
-  		console.log("item object:");
-  		console.log(item);
-  		ProductService.order(item);
-      return item;
-  	};
+    BasketService.get().then(function(data) {
+      console.log("order getting basket");
+      console.log(data.data);
+      $scope.basket = data.data;
+    });
+
+ //  	$http.get("/api/order/")
+ //  	.success(function(data) {
+	// 	$scope.order = data.data;
+	// });
+
+
+ //    BasketService.get().then(function(data) {
+ //      console.log("order getting basket");
+ //      console.log(data.data);
+ //      $scope.basket = data.data;
+ //    });
   });
+

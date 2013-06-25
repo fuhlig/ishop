@@ -14,7 +14,7 @@ angular.module('shopApp')
       var id = product.productid;
       console.log("id: " + id);
       console.log("quantity: " + quantity);
-      $http.post("/api/order/" + id + "/" + quantity).
+      $http.post("/api/basket/" + id + "/" + quantity).
         success(function(data) {
           console.log("result data: " + data);
         });
